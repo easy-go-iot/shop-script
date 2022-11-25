@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: user-srv-config    //这个是我们修改的configmap.yaml的name
+  name: userSrvConfig    //这个是我们修改的configmap.yaml的name
 data:
   name: user-srv
   port: 50001
