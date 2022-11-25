@@ -3,11 +3,12 @@ kind: ConfigMap
 metadata:
   name: user-srv-config    # 这个是我们修改的configmap.yaml的name
 data:
-  name: user-srv
-  port: 50001
-  mysql:
-    host: 127.0.0.1
-    port: 3306
-    db: shop_user_srv
-    user: root
-    password: root
+  server-config-yaml: |
+    name: user-srv
+    port: 50001
+    mysql:
+      host: 127.0.0.1
+      port: 3306
+      db: shop_user_srv
+      user: root
+      password: root
