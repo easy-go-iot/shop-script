@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-srv-grpc-server
+sepc:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-srv-grpc-server
+  template:
+    metadata:
+      labels:
+        app: user-srv-grpc-server
+    spec:
+      containers:
+        - name: user-srv-grpc-server
+          image:  registry.cn-hangzhou.aliyuncs.com/zj_image/user-srv:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort:
+              name: grpc
+          volumeMounts:
+          - name: settings
+            mountPath: /home/conf/server-config.yaml
+            subPath: server-config-yaml
+      volumes:
+        - name: settings
+          configMap:
+            name: user-srv-config
